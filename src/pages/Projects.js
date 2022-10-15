@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Link from "../components/Link";
+import { Link as RouterLink } from "react-router-dom";
 import List from "../components/List";
 
 function Projects({ userName }) {
@@ -29,7 +29,11 @@ function Projects({ userName }) {
           <List
             items={projects.map((project) => ({
               field: project.name,
-              value: <Link url={project.html_url} title={project.html_url} />,
+              value: (
+                <RouterLink to={`/projects/${project.name}`}>
+                  Open project
+                </RouterLink>
+              ),
             }))}
           />
         </div>
